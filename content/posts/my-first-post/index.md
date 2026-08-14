@@ -6,7 +6,7 @@ tags: ["测试标签"]
 categories: ["测试"]
 comments: true
 cover:
-    image: "/cover/post001.jpg"
+    image: "/cover/post001.webp"
     alt: "扭曲的车流：城市夜晚的不安与躁动"
     hidden: false
 ---
@@ -134,4 +134,4 @@ content/posts/article/
 ├── pic1.jpg      # 当前文章专用图片
 ```
 在 md 中直接引用 `![](./pic1.jpg)`
-![](test.png)
+![](/posts/test.png)

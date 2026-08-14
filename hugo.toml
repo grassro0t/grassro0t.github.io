@@ -73,7 +73,7 @@ disableScrollToTop = false # 回到顶部按钮
 enabled = true
 title = "GrassRo0t"
 subtitle = "程序员 / 摄影爱好者 | 记录学习与思考"
-ImageUrl = "/avatar.jpg"
+ImageUrl = "/avatar.webp"
 imageWidth = 130
 
 buttons = [
