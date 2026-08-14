@@ -1,11 +1,10 @@
-/* 自定义全局配色变量，明暗模式分开 */
-:root {
-    --accent: #2563eb; /* 主题强调蓝色，可以换成你喜欢的颜色 */
-}
-.dark {
-    --accent: #60a5fa;
-}
 /* 代码块圆角优化 */
+[data-theme="dark"] body {
+    background: linear-gradient(to bottom, #040410, #0b0b1e) !important;
+}
+[data-theme="light"] body {
+    background: linear-gradient(to bottom, #fcfbf8, #f1eee6) !important;
+}
 pre {
     border-radius: 8px !important;
 }
