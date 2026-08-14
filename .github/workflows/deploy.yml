@@ -6,6 +6,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# =========新增权限配置，解决403 denied关键=========
+permissions:
+  contents: write
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
