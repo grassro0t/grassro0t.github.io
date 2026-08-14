@@ -1,20 +1,98 @@
 baseURL = "https://grassro0t.github.io/"
-title = "我的技术博客"
-theme = "PaperMod"
 locale = "zh-cn"
-paginate = 10
-enableRobotsTXT = true
+title = "Ro0tRo0m"
+theme = "PaperMod"
+paginate = 10 # 每页文章数量
 
+[menu]
+[[menu.main]]
+name = "首页"
+url = "/"
+weight = 1
+[[menu.main]]
+name = "文章"
+url = "/posts/"
+weight = 2
+[[menu.main]]
+name = "归档"
+url = "/archives/"
+weight = 3
+[[menu.main]]
+name = "搜索"
+url = "/search/"
+weight = 4
+[[menu.main]]
+name = "关于"
+url = "/about/"
+weight = 5
+
+# ========== 搜索功能正确配置（PaperMod官方推荐）==========
+[outputs]
+home = ["HTML", "JSON"]
+
+[markup]
+[markup.goldmark.renderer]
+unsafe = true # 允许文章内原生HTML（添加按钮、标签块必备）
+[markup.highlight]
+codeFences = true
+guessSyntax = true
+lineNos = true        # 代码块显示行号
+noClasses = false
+
+# ========= 【只保留唯一一块 [params] 】所有参数全部放这里 =========
 [params]
-  author = "GrassRo0t"
-  defaultTheme = "auto" # auto/dark/light
-  ShowReadingTime = true
-  ShowWordCount = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true # 代码块复制按钮 ✨程序员必备
-  UseHugoToc = true          # 文章目录
-  homeInfoParams = { Title = "欢迎", Content = "技术笔记博客" }
+search = true
+env = "production"
+description = "个人技术博客"
+keywords = ["技术", "笔记", "编程"]
+author = "GrassRo0t"
+DateFormat = "2006-01-02"
+defaultTheme = "auto" # auto跟随系统 / light / dark
+disableThemeToggle = false
 
-[permalinks]
-posts = "/posts/:slug/" # 文章url格式，类似hexo
+# ========== 核心功能开关 ==========
+ShowReadingTime = true    # 阅读时长
+ShowWordCount = true      # 字数统计
+ShowShareButtons = true   # 文章分享按钮
+ShowPostNavLinks = true   # 上下篇文章跳转
+ShowBreadCrumbs = true    # 面包屑导航
+ShowCodeCopyButtons = true # 代码复制按钮
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true         # 使用Hugo原生目录（推荐）
+
+showtoc = true            # 开启文章目录
+tocOpen = false           # 目录默认折叠
+autoCollapseToc = true    # 自动折叠非当前章节
+maxTocLevel = 4           # 目录识别标题层级(h1~h4)
+
+hidemeta = false
+hideSummary = false
+disableScrollToTop = false # 回到顶部按钮
+
+[params.profileMode]
+enabled = true
+title = "GrassRo0t"
+subtitle = "程序员 / 摄影爱好者 | 记录学习与思考"
+ImageUrl = "/avatar.jpg"
+imageWidth = 130
+
+buttons = [
+    { name = "文章", url = "/posts/" },
+    { name = "归档", url = "/archives/" },
+    { name = "搜索", url = "/search/" }
+]
+
+[[params.profileMode.SocialIcons]]
+name = "github"
+url = "https://github.com/grassro0t"
+
+[[params.profileMode.SocialIcons]]
+name = "email"
+url = "mailto:julian.song.work@outlook.com"
+
+# 生成 robots.txt
+enableRobotsTXT = true
+# RSS订阅
+[outputFormats.RSS]
+baseName = "feed"
+mediaType = "application/rss+xml"

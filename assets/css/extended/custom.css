@@ -1,0 +1,18 @@
+/* 自定义全局配色变量，明暗模式分开 */
+:root {
+    --accent: #2563eb; /* 主题强调蓝色，可以换成你喜欢的颜色 */
+}
+.dark {
+    --accent: #60a5fa;
+}
+/* 代码块圆角优化 */
+pre {
+    border-radius: 8px !important;
+}
+.giscus-area {
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+.giscus-frame {
+  width:100% !important;
+}

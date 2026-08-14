@@ -1,13 +1,29 @@
-+++
-title = "第一篇文章"
-date = '2026-08-14T16:32:09+08:00'
-draft = false   # true=草稿，构建默认忽略
-tags = ["测试标签"]
-categories = ["测试"]
-+++
+---
+title: "第一篇文章"
+date: '2026-08-14T16:32:09+08:00'
+draft: false   # true=草稿，构建默认忽略
+tags: ["测试标签"]
+categories: ["测试"]
+comments: true
+cover:
+    image: "/cover/post001.jpg"
+    alt: "扭曲的车流：城市夜晚的不安与躁动"
+    hidden: false
+---
 
-# 本篇用于博客测试
-
+# 本篇用于博客测试，日常工作流如下
+```
+# 新建文章
+hugo new posts/xxx.md
+# 本地热更新预览
+hugo server -D
+# 在文章中取消草稿模式
+draft = false
+# 写完提交推送，Actions自动构建发布
+git add .
+git commit -m "add article"
+git push
+```
 
 # Hugo 常用命令
 > 前提：进入项目根目录执行所有命令
@@ -118,4 +134,4 @@ content/posts/article/
 ├── pic1.jpg      # 当前文章专用图片
 ```
 在 md 中直接引用 `![](./pic1.jpg)`
-![](./test.png)
+![](test.png)
