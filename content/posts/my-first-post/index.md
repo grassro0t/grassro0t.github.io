@@ -134,4 +134,4 @@ content/posts/article/
 ├── pic1.jpg      # 当前文章专用图片
 ```
 在 md 中直接引用 `![](./pic1.jpg)`
-![](/posts/test.png)
+![](/posts/my-first-post/test.png)
