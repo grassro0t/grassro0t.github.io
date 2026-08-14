@@ -1,0 +1,37 @@
+name: Deploy Hugo Blog
+
+# 触发条件：push到main分支；支持网页/插件手动运行
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1.拉取代码，包含git submodule主题
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      # 2.安装Hugo Extended（PaperMod等主题必须extended版本）
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+          extended: true
+
+      # 3.构建站点，压缩资源
+      - name: Build Hugo
+        run: hugo --gc --minify
+
+      # 4.部署静态文件到 gh-pages 分支
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true # gh-pages分支只保留最新构建产物
