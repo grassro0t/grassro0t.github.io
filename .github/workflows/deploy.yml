@@ -12,7 +12,6 @@ permissions:
 
 env:
   HUGO_VERSION: 0.165.0
-  DART_SASS_VERSION: 1.77.8
 
 jobs:
   build-deploy:
@@ -25,14 +24,7 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      # 下载独立 Dart‑Sass 二进制，加入PATH
-      - name: Install Dart‑Sass standalone
-        run: |
-          curl -sfL --output-dir "${{ runner.temp }}" -O "https://github.com/sass/dart-sass/releases/download/${{ env.DART_SASS_VERSION }}/dart-sass-${{ env.DART_SASS_VERSION }}-linux-x64.tar.gz"
-          mkdir -p $HOME/.local/dart-sass
-          tar -C $HOME/.local/dart-sass -xf "${{ runner.temp }}/dart-sass-${{ env.DART_SASS_VERSION }}-linux-x64.tar.gz"
-          echo "$HOME/.local/dart-sass" >> $GITHUB_PATH
-
+      # Hugo extended 已内置 Embedded Dart Sass，无需单独安装 dart-sass
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -42,7 +34,6 @@ jobs:
       - name: Check tool versions
         run: |
           hugo version
-          dart-sass --version
 
       # 3.构建站点，压缩资源
       - name: Build Hugo
