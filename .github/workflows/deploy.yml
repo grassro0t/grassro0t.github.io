@@ -23,9 +23,9 @@ jobs:
 
       # 2.安装Hugo Extended（PaperMod等主题必须extended版本）
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: latest
+          hugo-version: '0.165.0'
           extended: true
 
       # 3.构建站点，压缩资源

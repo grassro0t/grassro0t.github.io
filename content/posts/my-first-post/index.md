@@ -1,14 +1,14 @@
 ---
 title: "第一篇文章"
-date: '2026-08-14T16:32:09+08:00'
+date: 2026-08-14
 draft: false   # true=草稿，构建默认忽略
 tags: ["测试标签"]
 categories: ["测试"]
+toc: true
 comments: true
-cover:
-    image: "/cover/post001.webp"
-    alt: "扭曲的车流：城市夜晚的不安与躁动"
-    hidden: false
+featuredImage: "/cover/post001.webp"
+featuredImagePreview: "/cover/post001.webp"
+description: "hugo 博客测试"
 ---
 
 # 本篇用于博客测试，日常工作流如下

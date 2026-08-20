@@ -1,10 +1,81 @@
 baseURL = "https://grassro0t.github.io/"
-locale = "zh-cn"
+languageCode = "zh‑cn"
 title = "Ro0tRo0m"
-theme = "PaperMod"
-paginate = 10 # 每页文章数量
+theme = "FixIt"
+# ---------------------- 网站基础中文优化 ----------------------
+defaultContentLanguage = "zh-cn"
+hasCJKLanguage = true  # 中日韩字符优化，摘要、分页时间正常
+[languages.zh-cn]
+dateFormat = "2006‑01‑02"
 
-[menu]
+[params]
+defaultTheme = "auto"
+
+[params.author]
+name = "GrassRo0t"
+email = "julian.song.work@outlook.com"
+link = "https://github.com/GrassRo0t"
+
+[params.mermaid]
+enable = true
+theme = "base"
+securityLevel = "loose"
+
+# ---------------------- 页面全局配置 ----------------------
+[params.page]
+toc = true               # 文章目录开启，长技术笔记必备
+tocSidebar = true        # 侧边悬浮目录（大屏）
+copy = true              # 代码块复制按钮 ✅
+ruby = false
+fraction = false
+# ---------------------- KaTeX数学公式支持 ----------------------
+[params.page.math]
+enable = true
+copyTex = true
+mhchem = true
+# ---------------------- 内置本地搜索（不需要algolia账号） ----------------------
+[params.search]
+enable = true
+type = "local"
+contentLength = 5000
+placeholder = "搜索文章..."
+# ---------------------- 页脚配置 ----------------------
+[params.footer]
+enable = true
+hugo = false             # 关闭hugo、fixit主题广告输出
+copyright = true
+author = true
+since = "2026"           # 博客起始年份
+# ========== 评论系统全局配置 ==========
+[params.page.comment]
+enable = true          # 全局开启评论；单篇md可以 frontmatter comment: false 关闭
+[params.page.comment.giscus]
+enable = true
+repo = "grassro0t/grassro0t.github.io"          # 替换：用户名/仓库名
+repoId = "R_kgDOT4Lznw"             # 替换 giscus网页拿到的repoId
+category = "Announcements"      # 推荐 Announcements
+categoryId = "DIC_kwDOT4Lzn84DDWxc"     # 替换分类ID
+mapping = "title"                # 按文章标题映射discussion，和你papermod保持一致
+strict = "0"
+reactionsEnabled = "1"          # 开启点赞表情
+emitMetadata = "0"
+inputPosition = "bottom"        # 评论输入框在下方
+lang = "zh‑CN"
+lightTheme = "light"
+darkTheme = "dark"              # 跟随FixIt明暗主题自动切换
+# ---------------------- 不蒜子访问统计（可选，不需要可以注释） ----------------------
+[params.busuanzi]
+enable = true
+siteViews = true
+pageViews = true
+
+
+# ---------------------- 代码高亮增强 ----------------------
+[markup.highlight]
+codeFences = true
+noClasses = false
+lineNos = true          # 默认显示代码行号
+
 [[menu.main]]
 name = "首页"
 url = "/"
@@ -18,81 +89,6 @@ name = "归档"
 url = "/archives/"
 weight = 3
 [[menu.main]]
-name = "搜索"
-url = "/search/"
-weight = 4
-[[menu.main]]
 name = "关于"
 url = "/about/"
-weight = 5
-
-# ========== 搜索功能正确配置（PaperMod官方推荐）==========
-[outputs]
-home = ["HTML", "JSON"]
-
-[markup]
-[markup.goldmark.renderer]
-unsafe = true # 允许文章内原生HTML（添加按钮、标签块必备）
-[markup.highlight]
-codeFences = true
-guessSyntax = true
-lineNos = true        # 代码块显示行号
-noClasses = false
-
-# ========= 【只保留唯一一块 [params] 】所有参数全部放这里 =========
-[params]
-search = true
-env = "production"
-description = "个人技术博客"
-keywords = ["技术", "笔记", "编程"]
-author = "GrassRo0t"
-DateFormat = "2006-01-02"
-defaultTheme = "auto" # auto跟随系统 / light / dark
-disableThemeToggle = false
-
-# ========== 核心功能开关 ==========
-ShowReadingTime = true    # 阅读时长
-ShowWordCount = true      # 字数统计
-ShowShareButtons = true   # 文章分享按钮
-ShowPostNavLinks = true   # 上下篇文章跳转
-ShowBreadCrumbs = true    # 面包屑导航
-ShowCodeCopyButtons = true # 代码复制按钮
-ShowRssButtonInSectionTermList = true
-UseHugoToc = true         # 使用Hugo原生目录（推荐）
-
-showtoc = true            # 开启文章目录
-tocOpen = false           # 目录默认折叠
-autoCollapseToc = true    # 自动折叠非当前章节
-maxTocLevel = 4           # 目录识别标题层级(h1~h4)
-
-hidemeta = false
-hideSummary = false
-disableScrollToTop = false # 回到顶部按钮
-
-[params.profileMode]
-enabled = true
-title = "GrassRo0t"
-subtitle = "程序员 / 摄影爱好者 | 记录学习与思考"
-ImageUrl = "/avatar.webp"
-imageWidth = 130
-
-buttons = [
-    { name = "文章", url = "/posts/" },
-    { name = "归档", url = "/archives/" },
-    { name = "搜索", url = "/search/" }
-]
-
-[[params.profileMode.SocialIcons]]
-name = "github"
-url = "https://github.com/grassro0t"
-
-[[params.profileMode.SocialIcons]]
-name = "email"
-url = "mailto:julian.song.work@outlook.com"
-
-# 生成 robots.txt
-enableRobotsTXT = true
-# RSS订阅
-[outputFormats.RSS]
-baseName = "feed"
-mediaType = "application/rss+xml"
+weight = 4
