@@ -34,7 +34,7 @@ jobs:
           echo "$HOME/.local/dart-sass" >> $GITHUB_PATH
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v4
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
