@@ -28,6 +28,12 @@ jobs:
           hugo-version: '0.165.0'
           extended: true
 
+      # =========新增：CI环境安装 dart‑sass =========
+      - name: Install Dart Sass
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dart-sass
+
       # 3.构建站点，压缩资源
       - name: Build Hugo
         run: hugo --gc --minify
