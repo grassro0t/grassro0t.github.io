@@ -1,9 +1,11 @@
 ---
 title: "第一篇文章"
+slug: "my‑first‑post"
 date: 2026-08-14
 draft: false   # true=草稿，构建默认忽略
 tags: ["测试标签"]
 categories: ["测试"]
+summary: "第一篇文章，用于测试博客的基本功能是否正常。"
 toc: true
 comments: true
 featuredImage: "/cover/post001.webp"
@@ -16,7 +18,8 @@ description: "hugo 博客测试"
 # 新建文章
 hugo new posts/xxx.md
 # 本地热更新预览
-hugo server -D
+rm -rf public resources .hugo_build.lock
+hugo server -D --disableFastRender
 # 在文章中取消草稿模式
 draft = false
 # 写完提交推送，Actions自动构建发布
@@ -134,4 +137,4 @@ content/posts/article/
 ├── pic1.jpg      # 当前文章专用图片
 ```
 在 md 中直接引用 `![](./pic1.jpg)`
-![](/posts/my-first-post/test.png)
+![](../my-first-post/test.png)
