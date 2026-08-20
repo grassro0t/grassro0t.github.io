@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+env:
+  HUGO_VERSION: 0.165.0
+  DART_SASS_VERSION: 1.77.8
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -21,18 +25,24 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      # 2.安装Hugo Extended（PaperMod等主题必须extended版本）
+      # 下载独立 Dart‑Sass 二进制，加入PATH
+      - name: Install Dart‑Sass standalone
+        run: |
+          curl -sfL --output-dir "${{ runner.temp }}" -O "https://github.com/sass/dart-sass/releases/download/${{ env.DART_SASS_VERSION }}/dart-sass-${{ env.DART_SASS_VERSION }}-linux-x64.tar.gz"
+          mkdir -p $HOME/.local/dart-sass
+          tar -C $HOME/.local/dart-sass -xf "${{ runner.temp }}/dart-sass-${{ env.DART_SASS_VERSION }}-linux-x64.tar.gz"
+          echo "$HOME/.local/dart-sass" >> $GITHUB_PATH
+
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+        uses: peaceiris/actions-hugo@v4
         with:
-          hugo-version: '0.165.0'
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
-      # =========新增：CI环境安装 dart‑sass =========
-      - name: Install Dart Sass
+      - name: Check tool versions
         run: |
-          sudo apt-get update
-          sudo apt-get install -y dart-sass
+          hugo version
+          sass --version
 
       # 3.构建站点，压缩资源
       - name: Build Hugo
