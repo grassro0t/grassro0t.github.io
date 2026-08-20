@@ -1,94 +1,135 @@
+# ===================== Hugo 全局基础配置 =====================
 baseURL = "https://grassro0t.github.io/"
-languageCode = "zh‑cn"
-title = "Ro0tRo0m"
+title = "grassro0t的博客"
 theme = "FixIt"
-# ---------------------- 网站基础中文优化 ----------------------
 defaultContentLanguage = "zh-cn"
-hasCJKLanguage = true  # 中日韩字符优化，摘要、分页时间正常
-[languages.zh-cn]
-dateFormat = "2006‑01‑02"
+locale = "zh-CN"
+hasCJKLanguage = true
 
-[params]
-defaultTheme = "auto"
+[outputs]
+# FixIt 搜索依赖 home 的 "search" 输出格式，用于生成 /search.json 索引文件
+# FixIt 归档页由 home 的 "archives" 输出格式渲染（layouts/home.archives.html）
+home = ["HTML", "RSS", "archives", "search"]
+_merge = "shallow"
 
-[params.author]
-name = "GrassRo0t"
-email = "julian.song.work@outlook.com"
-link = "https://github.com/GrassRo0t"
+[markup]
+_merge = "shallow"
 
-[params.mermaid]
-enable = true
-theme = "base"
-securityLevel = "loose"
+[taxonomies]
+_merge = "shallow"
 
-# ---------------------- 页面全局配置 ----------------------
-[params.page]
-toc = true               # 文章目录开启，长技术笔记必备
-tocSidebar = true        # 侧边悬浮目录（大屏）
-copy = true              # 代码块复制按钮 ✅
-ruby = false
-fraction = false
-# ---------------------- KaTeX数学公式支持 ----------------------
-[params.page.math]
-enable = true
-copyTex = true
-mhchem = true
-# ---------------------- 内置本地搜索（不需要algolia账号） ----------------------
-[params.search]
-enable = true
-type = "local"
-contentLength = 5000
-placeholder = "搜索文章..."
-# ---------------------- 页脚配置 ----------------------
-[params.footer]
-enable = true
-hugo = false             # 关闭hugo、fixit主题广告输出
-copyright = true
-author = true
-since = "2026"           # 博客起始年份
-# ========== 评论系统全局配置 ==========
-[params.page.comment]
-enable = true          # 全局开启评论；单篇md可以 frontmatter comment: false 关闭
-[params.page.comment.giscus]
-enable = true
-repo = "grassro0t/grassro0t.github.io"          # 替换：用户名/仓库名
-repoId = "R_kgDOT4Lznw"             # 替换 giscus网页拿到的repoId
-category = "Announcements"      # 推荐 Announcements
-categoryId = "DIC_kwDOT4Lzn84DDWxc"     # 替换分类ID
-mapping = "title"                # 按文章标题映射discussion，和你papermod保持一致
-strict = "0"
-reactionsEnabled = "1"          # 开启点赞表情
-emitMetadata = "0"
-inputPosition = "bottom"        # 评论输入框在下方
-lang = "zh‑CN"
-lightTheme = "light"
-darkTheme = "dark"              # 跟随FixIt明暗主题自动切换
-# ---------------------- 不蒜子访问统计（可选，不需要可以注释） ----------------------
-[params.busuanzi]
-enable = true
-siteViews = true
-pageViews = true
-
-
-# ---------------------- 代码高亮增强 ----------------------
 [markup.highlight]
 codeFences = true
+guessSyntax = true
 noClasses = false
-lineNos = true          # 默认显示代码行号
+lineNos = true
+lineNumbersInTable = true
 
+# ===================== 主题参数 params =====================
+[params]
+version = "0.4.5"
+description = "Hugo FixIt博客"
+
+# ⚠️重点！v0.4.5 author是map，绝对不能写 author = "名字"
+[params.author]
+name = "grassro0t"
+link = "https://github.com/GrassRo0t"
+email = "julian.song.work@outlook.com"
+avatar = "/avatar.webp"
+
+# 页头设置
+[params.header.title]
+name = "Ro0tRo0m"
+
+# 页脚
+[params.footer]
+hugo = false
+copyright = true
+author = true
+since = 2026
+
+# Pangu：自动在中英文之间插入空格，优化中文排版（可选，开启后全文生效）
+[params.pangu]
+enable = true
+
+# 页面配置 toc必须子表，禁止toc=true
+[params.page]
+lightgallery = true
+twemoji = true
+# 启用 instant.page 预加载（鼠标悬停链接时预加载，提升浏览体验）
+instantPage = true
+
+# 数学公式支持（KaTeX 引擎；$...$ 行内公式 / $$...$$ 独立公式块）
+[params.page.math]
+enable = true
+type = "katex"
+
+[params.page.toc]
+enable = true
+keepStatic = false
+auto = true
+position = "right"
+
+# ========== 评论系统（Giscus，基于 GitHub Discussions） ==========
+# 全局开启评论；单篇文章可用 front matter comment: false 单独关闭
+[params.page.comment]
+enable = true
+
+[params.page.comment.giscus]
+enable = true
+repo = "grassro0t/grassro0t.github.io"
+repoId = "R_kgDOT4Lznw"
+category = "Announcements"
+categoryId = "DIC_kwDOT4Lzn84DDWxc"
+mapping = "title"
+strict = "0"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "bottom"
+lang = "zh-CN"
+lightTheme = "light"
+darkTheme = "dark"
+
+# Fuse.js 本地搜索
+# type 可选值：["algolia", "fuse", "cse", "post-chat"]
+[params.search]
+enable = true
+type = "fuse"
+
+# Fuse 检索参数（针对中文优化：minMatchCharLength 设为 1）
+[params.search.fuse]
+isCaseSensitive = false
+minMatchCharLength = 1
+findAllMatches = false
+location = 0
+threshold = 0.3
+distance = 100
+ignoreLocation = false
+useExtendedSearch = false
+ignoreFieldNorm = false
+
+# 顶部菜单
 [[menu.main]]
 name = "首页"
 url = "/"
 weight = 1
-[[menu.main]]
-name = "文章"
-url = "/posts/"
-weight = 2
+
 [[menu.main]]
 name = "归档"
 url = "/archives/"
+weight = 2
+
+[[menu.main]]
+name = "标签"
+url = "/tags/"
 weight = 3
+
+[[menu.main]]
+name = "分类"
+url = "/categories/"
+weight = 4
+
 [[menu.main]]
 name = "关于"
 url = "/about/"
-weight = 4
+weight = 5
