@@ -6,22 +6,28 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-# =========新增权限配置，解决403 denied关键=========
+# GitHub Pages 官方部署所需权限
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只允许一个部署任务，避免部署冲突
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 env:
   HUGO_VERSION: 0.165.0
 
 jobs:
-  build-deploy:
+  # 1.构建站点
+  build:
     runs-on: ubuntu-latest
     steps:
-      # 1.拉取代码，包含git submodule主题
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true
           fetch-depth: 0
 
       # Hugo extended 已内置 Embedded Dart Sass，无需单独安装 dart-sass
@@ -35,14 +41,23 @@ jobs:
         run: |
           hugo version
 
-      # 3.构建站点，压缩资源
       - name: Build Hugo
         run: hugo --gc --minify
 
-      # 4.部署静态文件到 gh-pages 分支
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      # 将构建产物 public/ 上传为部署 artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          force_orphan: true # gh-pages分支只保留最新构建产物
+          path: ./public
+
+  # 2.部署到 GitHub Pages（官方 Actions 方式，不经过 gh-pages 分支）
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
