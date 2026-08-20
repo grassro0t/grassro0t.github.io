@@ -42,7 +42,7 @@ jobs:
       - name: Check tool versions
         run: |
           hugo version
-          sass --version
+          dart-sass --version
 
       # 3.构建站点，压缩资源
       - name: Build Hugo
