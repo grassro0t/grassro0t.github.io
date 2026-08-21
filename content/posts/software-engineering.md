@@ -8,8 +8,6 @@ categories: ["技术笔记"]
 summary: "软件工程基础内容，包括需求分析、设计、实现、测试、维护等，涉及部分工具如UML、scrum等。"
 toc: true
 comments: true
-featuredImage: "/cover/post001.webp"
-featuredImagePreview: "/cover/post001.webp"
 description: "软件工程基础"
 ---
 
