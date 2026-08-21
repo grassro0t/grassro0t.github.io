@@ -6,6 +6,10 @@ defaultContentLanguage = "zh-cn"
 locale = "zh-CN"
 hasCJKLanguage = true
 summaryLength = 120
+# 开启hugo自动生成 robots.txt
+enableRobotsTXT = true
+# 必须开启sitemap
+disableKinds = []   # 不要写 "sitemap"，会关闭站点地图
 
 [outputs]
 # FixIt 搜索依赖 home 的 "search" 输出格式，用于生成 /search.json 索引文件
