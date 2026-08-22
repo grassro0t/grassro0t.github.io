@@ -1,5 +1,5 @@
 ---
-title: "Linux基础"
+title: "计算机基础系列-Linux基础"
 slug: "linux"
 date: 2026-08-21
 draft: false   # true=草稿，构建默认忽略

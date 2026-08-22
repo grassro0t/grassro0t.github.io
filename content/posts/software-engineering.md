@@ -1,5 +1,5 @@
 ---
-title: "软件工程"
+title: "计算机基础系列-软件工程"
 slug: "software-engineering"
 date: 2026-08-20
 draft: false   # true=草稿，构建默认忽略
