@@ -27,6 +27,7 @@ git add .
 git commit -m "add article"
 git push
 ```
+- 空行删除小技巧：`^\s*(?=\r?$)\n`正则替换
 
 # Hugo 常用命令
 > 前提：进入项目根目录执行所有命令

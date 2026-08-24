@@ -1,7 +1,7 @@
 ---
 title: "计算机基础系列-软件工程"
 slug: "software-engineering"
-date: 2026-08-20
+date: 2026-08-20T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略
 tags: ["项目开发", "软件工程", "c++"]
 categories: ["技术笔记"]

@@ -1,7 +1,7 @@
 ---
 title: "C++工程常用工具链-编译调试测试篇"
 slug: "build-test-tool"
-date: 2026-08-23
+date: 2026-08-23T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略
 tags: ["工具", "c++", "测试"]
 categories: ["技术笔记"]

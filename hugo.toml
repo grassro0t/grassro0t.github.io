@@ -4,6 +4,7 @@ title = "grassro0t的博客"
 theme = "FixIt"
 defaultContentLanguage = "zh-cn"
 locale = "zh-CN"
+timeZone = "Asia/Shanghai"
 hasCJKLanguage = true
 summaryLength = 120
 # 开启hugo自动生成 robots.txt

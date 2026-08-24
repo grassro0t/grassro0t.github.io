@@ -1,7 +1,7 @@
 ---
 title: "计算机基础系列-Linux基础"
 slug: "linux"
-date: 2026-08-21
+date: 2026-08-21T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略
 tags: ["项目开发", "Linux", "c++"]
 categories: ["技术笔记"]
