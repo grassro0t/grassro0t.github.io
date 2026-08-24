@@ -1,7 +1,7 @@
 ---
 title: "第一篇文章"
 slug: "my‑first‑post"
-date: 2026-08-14
+date: 2026-08-14T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略
 tags: ["测试标签"]
 categories: ["测试"]

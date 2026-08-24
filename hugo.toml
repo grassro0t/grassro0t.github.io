@@ -54,6 +54,23 @@ copyright = true
 author = true
 since = 2026
 
+[params.appearance]
+pageStyle = "wide" # 页面宽度，wide更舒展，默认normal；narrow偏窄
+global_font_size = "16px"
+
+[params.home.profile]
+enable = true #开启首页个人简介块（头像、昵称、简介、社交图标）
+onlyFirstPage = true   # 只在第一页显示profile
+title = "grassro0t"
+subtitle = "C++后端｜技术笔记｜心理分析"
+typeit = true
+social = true
+
+[params.social]
+GitHub = "https://github.com/GrassRo0t"
+Email = "julian.song.work@outlook.com"
+RSS = true
+
 # Pangu：自动在中英文之间插入空格，优化中文排版（可选，开启后全文生效）
 [params.pangu]
 enable = true
