@@ -22,6 +22,8 @@ rm -rf public resources .hugo_build.lock
 hugo server -D --disableFastRender
 # 在文章中取消草稿模式
 draft = false
+# 构建发布
+hugo --cleanDestinationDir
 # 写完提交推送，Actions自动构建发布
 git add .
 git commit -m "add article"
