@@ -62,7 +62,7 @@ global_font_size = "16px"
 enable = true #开启首页个人简介块（头像、昵称、简介、社交图标）
 onlyFirstPage = true   # 只在第一页显示profile
 title = "grassro0t"
-subtitle = "C++后端｜技术笔记｜心理分析"
+subtitle = "技术笔记｜摄影知识｜日常感悟"
 typeit = true
 social = true
 
