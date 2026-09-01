@@ -1,5 +1,5 @@
 ---
-title: "高效C++-重要概念和常用代码"
+title: "高效C++系列-重要概念和常用代码"
 slug: "cpp-efficient-skill"
 date: 2026-08-27T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略

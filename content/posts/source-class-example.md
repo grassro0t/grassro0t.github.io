@@ -1,5 +1,5 @@
 ---
-title: "高效C++-资源管理类实例"
+title: "高效C++系列-资源管理类实例"
 slug: "source-class-example"
 date: 2026-08-30T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略

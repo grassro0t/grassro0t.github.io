@@ -1,5 +1,5 @@
 ---
-title: "网络编程"
+title: "网络编程系列-网络编程"
 slug: "network-coding"
 date: 2026-08-26T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略
@@ -8,7 +8,7 @@ categories: ["技术笔记"]
 summary: "网络编程相关知识点，包括网络IO模型、socket编程、多线程、事件驱动模型等。"
 toc: true
 comments: true
-description: "网络编程"
+description: "网络编程系列-网络编程"
 ---
 # 网络io模型
 
