@@ -39,7 +39,7 @@ description = "Hugo FixIt博客"
 # ⚠️重点！v0.4.5 author是map，绝对不能写 author = "名字"
 [params.author]
 name = "grassro0t"
-link = "https://github.com/GrassRo0t"
+link = "https://github.com/grassro0t"
 email = "julian.song.work@outlook.com"
 avatar = "/avatar.webp"
 
@@ -67,7 +67,7 @@ typeit = true
 social = true
 
 [params.social]
-GitHub = "GrassRo0t"
+GitHub = "grassro0t"
 Email = "julian.song.work@outlook.com"
 RSS = true
 
