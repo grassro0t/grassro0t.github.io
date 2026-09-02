@@ -1,6 +1,6 @@
 ---
 title: "课题分离理论"
-slug: "new-life"
+slug: "tasks-separation"
 date: 2026-08-29T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略
 tags: ["心理学", "非技术类话题"]
