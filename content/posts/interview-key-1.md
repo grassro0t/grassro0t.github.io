@@ -1,5 +1,5 @@
 ---
-title: "后端面试高频重点（一）"
+title: "计算机基础（一）"
 slug: "interview-key-1"
 date: 2026-09-27T12:00:00+08:00
 draft: false   # true=草稿，构建默认忽略
@@ -8,7 +8,7 @@ categories: ["面试八股"]
 summary: "本系列内容以面试和工作高频知识点为引扩展全貌，涵盖后端几乎所有常用知识点。"
 toc: true
 comments: true
-description: "后端面试高频重点（一）"
+description: "计算机基础（一）"
 ---
 
 >本部分内容为个人整理，以面试和工作高频知识点为引扩展全貌，涵盖计算机软件工程方向几乎所有常用知识点，只要是在其中的都是重点内容，只是有的可能对面试意义不大，将根据面试进度推进不断补充或修改
@@ -616,11 +616,11 @@ public:
 	- 缺少工程化工具
 	- RTTI、异常、虚继承不建议用
 - C++11的新特性？⭐⭐⭐⭐⭐
-	- auto、decltype
-	- 右值引用&&
+	- 自动类型推导：auto、decltype
 	- 列表初始化
-	- 智能指针
 	- lambda表达式
+	- 右值引用&&
+	- 智能指针
 	- constexpr
 	- unordered_map、unordered_set
 	- thread库
@@ -689,7 +689,6 @@ public:
 	- 有声明没定义的类型，比如类、内置数组、void、枚举、模板类
 	- 指针引用、静态成员、别名可以用
 - 左值引用、右值引用、const左值引用、值传递、万能引用区别？⭐⭐⭐⭐⭐
-	- 引用是别名，必须初始化
 	- 值传递：不可改变外部值，拷贝
 	- 左值引用：可改变外部值，不接收右值
 	- const 左值引用：不可改变外部值，接收右值
@@ -711,6 +710,12 @@ public:
 - std::move底层怎么实现的？
 	- 万能引用（引用折叠）
 	- std::forward还原变量属性进行完美转发
+- std::move与std::forward的本质区别？⭐⭐⭐⭐⭐
+	- std::move是强制转为右值
+	- std::forward是原样转发，一般配合T&&万能引用做转发器
+- 哪些类不能移动？⭐⭐⭐⭐⭐
+	- 禁止移动构造和移动赋值
+	- 标准库：mutex、atomic、condition_variable
 - 别名方法？⭐⭐⭐⭐⭐
 	- auto：忽略顶层const和引用，函数数组只获得指针，常与范围for联用
 	- decltype：获得完全类型
@@ -745,7 +750,7 @@ public:
 	- 算数转换（有符号无符号、整型浮点型）
 	- 函数、数组转指针
 	- 非const转const
-	- 类（运算符重载推荐explicit、转换构造函数）
+	- 类（运算符重载、转换构造函数）
 	- 派生类基类转换
 - 哪些时候会隐式类型转换？⭐⭐⭐
 	- 初始化、拷贝
@@ -822,9 +827,10 @@ public:
 - this指针特点？⭐⭐⭐⭐⭐
 	- 指向自身实例的顶层const指针，非const函数自带的隐性参数
 	- const函数自带的this指针应当底层也是const的，所以只有const实例能调用，非const函数调用const函数，this指针会增加底层const
-	- 函数&/&&限定符可以限定this指针的左右值
+	- 函数&/&&限定符可以限定this指针指向对象的左右值
 - 访问控制符有哪些？继承访问控制符有哪些？⭐⭐⭐⭐⭐
 	- 默认class是private，struct是public
+	- 提供给子类可实现的接口一般设计成protected，封装好的接口设计成public，内部工具设计成private，继承一般使用public，父类接口也开放
 	- 访问控制符：
 		- public：用户可访问
 		- protected：内部且类的友元和子类可访问
@@ -838,7 +844,7 @@ public:
 - 类的友元可以传递或继承吗？⭐⭐⭐
 	- 不行，而且只是个性质通知，不是传统的函数声明，函数声明需要在其他地方声明
 - 类的覆盖和重写的区别？⭐⭐⭐⭐⭐
-	- 覆盖：重写普通函数，会完全覆盖父类同名函数，使用using引入父类重载函数并单独覆盖
+	- 覆盖（不推荐）：重写非虚函数，修改父类实现，完全覆盖父类同名函数，使用using引入父类重载函数并单独覆盖
 	- 重写：重写虚函数
 - 构造函数初始化列表初始化与一般初始化区别？⭐⭐⭐⭐⭐
 	- 初始化列表：真正初始化
@@ -865,8 +871,8 @@ public:
 	- 移动赋值运算符（noexcept）
 	- copy and swap（推荐非成员函数swap）技巧可以统一拷贝和移动赋值运算符，但是高性能情况下别用
 - 为什么基类都要自定义虚析构？⭐⭐⭐⭐⭐
-	- 因为有可能new一个新对象，没法自动回收资源
-	- 因为自定义了析构，所以5个成员都需要自己实现
+	- 如果是非虚函数多态delete子类对象时，子类资源不会析构，内存泄露
+	- 拷贝成员依然会自动合成，但移动成员不再合成
 - 对象销毁情形？⭐⭐⭐⭐
 	- 离开作用域
 	- delete
@@ -881,7 +887,7 @@ public:
 	- 字面值类：至少一个constexpr构造函数，成员全是字面值或constexpr函数
 	- RAII类：一般用智能指针管理底层动态内存不需要自定义拷贝移动成员，分成像unique_ptr类和像shared_ptr类，尽量不用裸指针
 - 常用哪些STL？⭐⭐⭐⭐⭐
-	- vector、string、array、list、unordered_set、unordered_map、stack、queue、priority_queue
+	- queue、vector、string、array、list、unordered_set、unordered_map、priority_queue、stack
 - stl容器底层数据结构：⭐⭐⭐⭐⭐
 	- vector：连续数组
 	- deque：分块数组
@@ -923,7 +929,7 @@ public:
 	- 解决：拉链法（哈希表+链表）、下一个空桶、扩容rehash、优化哈希函数
 - 迭代器、裸指针、智能指针区别？⭐⭐⭐⭐⭐
 	- 裸指针：内存地址
-	- 智能指针：RAII封装裸指针，安全，自动释放
+	- 智能指针：RAII封装裸指针，异常安全，析构函数自动释放
 	- 迭代器：容器位置游标，底层不一定是指针
 - 什么情况会导致迭代器失效？⭐⭐⭐⭐
 	- 连续容器：扩容全部失效、删除后面失效
@@ -965,7 +971,7 @@ public:
 - 未格式化IO有哪些方法？
 	- peek、unget、putback
 	- seek、tell
-- map的mapped_type和value_type？迭代器与for遍历与下标？⭐⭐⭐⭐⭐
+- map的mapped_type和value_type？迭代器与for遍历与下标？·⭐⭐⭐⭐⭐
 	- mapped_type：pair<key,value>
 	- value_type：value
 	- 迭代器返回的是指针，mapped_type，需要->second
@@ -1095,13 +1101,13 @@ public:
 	- `auto g = bind(f, a, b, _2, c, _1);`
 	- `_n`占位符表示绑定后的函数参数位置
 - C++20有哪些新特性？⭐⭐⭐⭐⭐
-	- 原子操作支持智能指针解决ABA问题
 	- ranges范围库，代替泛型算法，支持view管道过滤器和lambda投影函数
-	- format格式化
 	- 支持协程
+	- 原子操作支持智能指针解决ABA问题
 	- constexpr增强，consteval限制编译期处理，编译期效率提升
-	- 自动合成<=>三路运算符重载
 	- concept变量，模板元编程增强
+	- format格式化
+	- 自动合成<=>三路运算符重载
 - enum hack什么意思？
 	- 类内staic只能类外初始化，enum hack进行类内初始化
 - 怎么做分离式编译？⭐⭐⭐⭐
